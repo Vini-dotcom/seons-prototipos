@@ -5,8 +5,44 @@
   "framework": "angular",
   "rewrites": [
     {
+      "source": "/dashboard",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/dash",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/home",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/analise-custos",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/freight-quote/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/playground",
+      "destination": "/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/dash",
+      "destination": "/dashboard",
+      "permanent": false
+    },
+    {
+      "source": "/home",
+      "destination": "/dashboard",
+      "permanent": false
     }
   ]
 }

@@ -6,6 +6,8 @@ import { CostAnalysisPageComponent } from './cost-analysis-page/cost-analysis-pa
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'dash', redirectTo: 'dashboard' },
+  { path: 'home', redirectTo: 'dashboard' },
   { path: 'analise-custos', component: CostAnalysisPageComponent },
   { path: 'freight-quote', loadChildren: () => import('./freight-quote/freight-quote.module').then(m => m.FreightQuoteModule) },
   { path: 'playground', component: PlaygroundComponent },
