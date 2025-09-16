@@ -1,0 +1,26 @@
+<mat-card class="quote">
+  <mat-card-title>Agente {{ quote.agentId }}</mat-card-title>
+  <mat-card-content>
+    <div class="grid">
+      <div><strong>Frete:</strong> {{ quote.freightValue.amount | number:'1.0-2' }} {{ quote.freightValue.currency }}</div>
+      <div><strong>Transit Time:</strong> {{ quote.transitTimeDays }} dias</div>
+      <div>
+        <mat-chip [color]="quote.transshipment ? 'warn' : undefined" selected>
+          {{ quote.transshipment ? ('Transbordo (' + (quote.transshipmentCount||1) + ')') : 'Sem transbordo' }}
+        </mat-chip>
+      </div>
+      <div><strong>Free Time:</strong> O {{ quote.freeTime.originDays }} / D {{ quote.freeTime.destinationDays }} dias</div>
+      <div class="charges" *ngIf="quote.charges as ch" [matTooltip]="(ch | json)">
+        <strong>Taxas:</strong> {{ quote.charges.length }} itens
+      </div>
+      <div><strong>Total:</strong> {{ quote.total.amount | number:'1.0-2' }} {{ quote.total.currency }}</div>
+      <div><strong>Normalizado USD:</strong> {{ quote.normalizedCostUSD | number:'1.0-2' }} USD</div>
+      <div><strong>Score:</strong> {{ quote.kpi.score || 0 }}</div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button color="primary" (click)="sendToCompare.emit()">Enviar para comparação</button>
+  </mat-card-actions>
+</mat-card>
+
+

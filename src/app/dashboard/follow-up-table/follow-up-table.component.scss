@@ -1,0 +1,39 @@
+.table-wrapper {
+  background: #fff;
+}
+
+table {
+  width: 100%;
+}
+
+.row:hover {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+tr:nth-child(even) td {
+  background: rgba(0,0,0,0.02);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: capitalize;
+}
+
+.status.ok { color: #2e7d32; }
+.status.atencao { color: #f9a825; }
+.status.atrasado { color: #c62828; }
+
+.details {
+  display: grid;
+  gap: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+
+

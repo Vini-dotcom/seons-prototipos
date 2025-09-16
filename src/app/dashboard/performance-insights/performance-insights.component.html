@@ -1,0 +1,77 @@
+<div class="grid">
+  <section class="card">
+    <h3>Ranking de Fornecedores (Pontualidade)</h3>
+    <ng-container *ngIf="(suppliers$ | async) as suppliers">
+    <table mat-table [dataSource]="suppliers" class="mat-elevation-z1">
+      <ng-container matColumnDef="fornecedor">
+        <th mat-header-cell *matHeaderCellDef>Fornecedor</th>
+        <td mat-cell *matCellDef="let e">{{ e.fornecedor }}</td>
+      </ng-container>
+      <ng-container matColumnDef="onTime">
+        <th mat-header-cell *matHeaderCellDef>% On-Time</th>
+        <td mat-cell *matCellDef="let e">
+          {{ e.onTimePct }}%
+          <mat-progress-bar mode="determinate" [value]="e.onTimePct" color="primary"></mat-progress-bar>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="atraso">
+        <th mat-header-cell *matHeaderCellDef>Atraso Médio</th>
+        <td mat-cell *matCellDef="let e">{{ e.atrasoMedioDias }} dias</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['fornecedor','onTime','atraso']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['fornecedor','onTime','atraso']"></tr>
+    </table>
+    </ng-container>
+  </section>
+
+  <section class="card">
+    <h3>Ranking de Portos (Desembaraço)</h3>
+    <ng-container *ngIf="(ports$ | async) as ports">
+    <table mat-table [dataSource]="ports" class="mat-elevation-z1">
+      <ng-container matColumnDef="porto">
+        <th mat-header-cell *matHeaderCellDef>Porto</th>
+        <td mat-cell *matCellDef="let e">{{ e.porto }}</td>
+      </ng-container>
+      <ng-container matColumnDef="pais">
+        <th mat-header-cell *matHeaderCellDef>País</th>
+        <td mat-cell *matCellDef="let e">{{ e.pais }}</td>
+      </ng-container>
+      <ng-container matColumnDef="tempo">
+        <th mat-header-cell *matHeaderCellDef>Tempo Médio</th>
+        <td mat-cell *matCellDef="let e">{{ e.tempoMedioDias }} dias</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['porto','pais','tempo']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['porto','pais','tempo']"></tr>
+    </table>
+    </ng-container>
+  </section>
+
+  <section class="card">
+    <h3>Tempo médio por etapa</h3>
+    <div class="chart" *ngIf="stageDurations$ | async as sd">
+      <canvas baseChart [data]="buildStackedData(sd)" [options]="stackedOptions" chartType="bar"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>% processos no prazo</h3>
+    <mat-button-toggle-group [value]="periodo" (change)="setPeriodo($event.value)">
+      <mat-button-toggle [value]="6">6m</mat-button-toggle>
+      <mat-button-toggle [value]="12">12m</mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="chart small">
+      <canvas baseChart [data]="{ labels: (onTimeSeries$ | async)?.labels, datasets: [ { data: (onTimeSeries$ | async)?.values, label: 'On-time %' } ] }" chartType="line"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Heatmap de atrasos (12m)</h3>
+    <div class="heatmap" *ngIf="(data.getDelayHeatmap() | async) as heat">
+      <ng-container *ngFor="let v of heat; let i = index">
+        <div class="cell" [style.background]="'rgba(211,47,47,' + (v/5) + ')'">{{ v }}</div>
+      </ng-container>
+    </div>
+  </section>
+</div>
+
+

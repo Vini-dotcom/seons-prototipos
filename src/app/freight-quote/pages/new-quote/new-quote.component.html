@@ -1,0 +1,30 @@
+<mat-horizontal-stepper>
+  <mat-step label="Dados do embarque">
+    <shipment-form (changed)="onShipmentChange($event)"></shipment-form>
+    <div>
+      <button mat-raised-button color="primary" matStepperNext>Continuar</button>
+    </div>
+  </mat-step>
+  <mat-step label="Despesas e critérios">
+    <charges-editor (changed)="onChargesChange($event)" [applyAll]="stepperForm.value.applyChargesToAll!" (applyAllChange)="stepperForm.patchValue({ applyChargesToAll: $event })"></charges-editor>
+    <div>
+      <button mat-button matStepperPrevious>Voltar</button>
+      <button mat-raised-button color="primary" matStepperNext>Continuar</button>
+    </div>
+  </mat-step>
+  <mat-step label="Simulação">
+    <button mat-raised-button color="primary" (click)="simulate()">Simular propostas</button>
+    <div class="cards">
+      <agent-quote-card *ngFor="let q of quotes" [quote]="q" (sendToCompare)="toggleSelect(q)"></agent-quote-card>
+    </div>
+    <div>
+      <button mat-button matStepperPrevious>Voltar</button>
+      <button mat-raised-button color="primary" matStepperNext>Continuar</button>
+    </div>
+  </mat-step>
+  <mat-step label="Revisão e decisão">
+    <decision-panel [quotes]="stepperForm.value.selectedQuotes || []"></decision-panel>
+  </mat-step>
+</mat-horizontal-stepper>
+
+

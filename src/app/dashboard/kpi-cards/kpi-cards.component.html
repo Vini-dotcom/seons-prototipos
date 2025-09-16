@@ -1,0 +1,15 @@
+<section class="kpis">
+  <mat-card class="kpi" *ngFor="let k of kpis" [ngClass]="k.color">
+    <div class="kpi-content">
+      <mat-icon class="kpi-icon">{{ k.icon }}</mat-icon>
+      <div class="kpi-text">
+        <div class="kpi-title">{{ k.title }}</div>
+        <div class="kpi-value">{{ k.value }}</div>
+      </div>
+    </div>
+  </mat-card>
+  
+</section>
+
+
+

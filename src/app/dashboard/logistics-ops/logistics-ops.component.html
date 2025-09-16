@@ -1,0 +1,32 @@
+<div class="grid">
+  <section class="card">
+    <h3>Produtos próximos de ruptura</h3>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let p of (stock$ | async)">
+        <mat-icon matListItemIcon>inventory_2</mat-icon>
+        <div matListItemTitle>{{ p.produto }}</div>
+        <div matListItemLine>Estoque {{ p.estoqueAtual }} • Consumo {{ p.consumoMedio }}/m • ETA {{ p.etaProximoDias }}d</div>
+        <span matListItemMeta class="badge" [ngClass]="p.severidade">{{ p.severidade }}</span>
+      </a>
+    </mat-nav-list>
+  </section>
+
+  <section class="card">
+    <h3>Consolidação de cargas</h3>
+    <div *ngIf="consolidation$ | async as c">
+      <p>Total: <strong>{{ c.totalConsolidados }}</strong> ({{ c.pctTotal | percent:'1.0-0' }}) • Economia: {{ c.economiaFrete | currency:'BRL' }}</p>
+      <div class="chart">
+        <canvas baseChart [data]="buildConsolidationData(c.serie)" [options]="barOptions" chartType="bar"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Tempo médio parado por etapa</h3>
+    <div class="chart" *ngIf="idle$ | async as idle">
+      <canvas baseChart [data]="buildIdleData(idle)" [options]="barOptions" chartType="bar"></canvas>
+    </div>
+  </section>
+</div>
+
+

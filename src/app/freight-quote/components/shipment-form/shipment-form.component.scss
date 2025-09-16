@@ -1,0 +1,7 @@
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
+.grid > * { grid-column: span 3; }
+@media (max-width: 1024px) { .grid > * { grid-column: span 4; } }
+@media (max-width: 600px) { .grid > * { grid-column: span 12; } }
+
+
+

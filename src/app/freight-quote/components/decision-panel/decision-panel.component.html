@@ -1,0 +1,15 @@
+<div class="panel" *ngIf="quotes?.length; else empty">
+  <h3>Propostas selecionadas: {{ quotes.length }}</h3>
+  <ul>
+    <li *ngFor="let q of quotes">
+      Agente {{ q.agentId }} — Total: {{ q.total.amount | number:'1.0-2' }} {{ q.total.currency }} (USD {{ q.normalizedCostUSD | number:'1.0-2' }}) — Score: {{ q.kpi.score || 0 }}
+    </li>
+  </ul>
+  <button mat-raised-button color="primary" routerLink="/freight-quote/compare">Ir para comparação</button>
+</div>
+<ng-template #empty>
+  <p>Nenhuma proposta selecionada.</p>
+</ng-template>
+
+
+

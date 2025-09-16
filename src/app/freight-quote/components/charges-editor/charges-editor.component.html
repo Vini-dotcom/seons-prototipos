@@ -1,0 +1,26 @@
+<div class="header">
+  <mat-slide-toggle [(ngModel)]="applyAll" (ngModelChange)="applyAllChange.emit($event)">Aplicar a todas as propostas</mat-slide-toggle>
+  <button mat-stroked-button color="primary" (click)="addCharge()">Adicionar taxa</button>
+</div>
+
+<div formArrayName="charges" class="list">
+  <div class="item" *ngFor="let g of charges.controls; let i = index" [formGroupName]="i">
+    <mat-form-field appearance="outline"><mat-label>Código</mat-label><input matInput formControlName="code"></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Descrição</mat-label><input matInput formControlName="description"></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Pagador</mat-label><mat-select formControlName="payer">
+      <mat-option value="Origin">Origin</mat-option><mat-option value="Destination">Destination</mat-option><mat-option value="Carrier">Carrier</mat-option><mat-option value="Customer">Customer</mat-option>
+    </mat-select></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Moeda</mat-label><mat-select formControlName="currency">
+      <mat-option value="USD">USD</mat-option><mat-option value="EUR">EUR</mat-option><mat-option value="BRL">BRL</mat-option>
+    </mat-select></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Valor</mat-label><input matInput type="number" formControlName="amount"></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Unidade</mat-label><mat-select formControlName="unit">
+      <mat-option value="Shipment">Shipment</mat-option><mat-option value="Container">Container</mat-option><mat-option value="W/M">W/M</mat-option><mat-option value="CBM">CBM</mat-option><mat-option value="KG">KG</mat-option>
+    </mat-select></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Quantidade</mat-label><input matInput type="number" formControlName="quantity"></mat-form-field>
+    <button mat-icon-button color="warn" aria-label="Remover" (click)="removeCharge(i)"><mat-icon>delete</mat-icon></button>
+  </div>
+</div>
+
+
+

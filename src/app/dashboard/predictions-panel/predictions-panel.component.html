@@ -1,0 +1,34 @@
+<div class="grid">
+  <section class="card">
+    <h3>Previsão de chegada (ETA)</h3>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let a of (arrivals$ | async)" [attr.aria-label]="'Abrir ' + a.id">
+        <mat-icon matListItemIcon>local_shipping</mat-icon>
+        <div matListItemTitle>{{ a.id }} — {{ a.fornecedor }}</div>
+        <div matListItemLine>ETA: {{ a.etaPrevista | date:'shortDate' }} • Desvio: {{ a.desvioEsperadoDias }}d
+        </div>
+        <mat-chip-set matListItemMeta>
+          <mat-chip [ngClass]="a.risco" [matTooltip]="'Heurística: fornecedor + porto + pendências'">Risco: {{ a.risco }}</mat-chip>
+        </mat-chip-set>
+      </a>
+    </mat-nav-list>
+  </section>
+
+  <section class="card">
+    <h3>Previsão de custo (12m)</h3>
+    <div class="chart">
+      <canvas baseChart [data]="{ labels: (costForecast$ | async)?.labels, datasets: [ { data: (costForecast$ | async)?.values, label: 'Custo BRL' } ] }" [options]="lineOptions" chartType="line"></canvas>
+    </div>
+  </section>
+
+  <section class="card insights">
+    <h3>Insights sazonais</h3>
+    <ul>
+      <li><mat-icon>trending_up</mat-icon> Produto Eletrônicos tende a aumentar custo em Nov/Dez</li>
+      <li><mat-icon>trending_down</mat-icon> Têxteis com queda sazonal em Mar/Abr</li>
+    </ul>
+  </section>
+</div>
+
+
+

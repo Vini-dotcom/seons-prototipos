@@ -1,0 +1,16 @@
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; padding: 16px; }
+.origens { grid-column: span 8; }
+.rotas { grid-column: span 4; }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.origin-card { background: #fff; border-radius: 4px; padding: 8px; }
+.origin-card .title { font-weight: 600; }
+.bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin: 6px 0; }
+.bar .ok { background: #2e7d32; }
+.bar .atencao { background: #f9a825; }
+.bar .critico { background: #c62828; }
+.bar.tiny { height: 6px; width: 120px; }
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(8, 1fr); } .origens, .rotas { grid-column: span 8; } .cards { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .grid { grid-template-columns: repeat(4, 1fr); } .origens, .rotas { grid-column: span 4; } }
+
+
+

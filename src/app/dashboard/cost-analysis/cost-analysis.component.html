@@ -1,0 +1,23 @@
+<div class="charts-grid">
+  <div class="chart-card">
+    <h4>Produtos mais importados</h4>
+    <div class="chart">
+      <canvas baseChart [data]="{ labels: barLabels, datasets: barDatasets }" [options]="barOptions" chartType="bar"></canvas>
+    </div>
+  </div>
+  <div class="chart-card">
+    <h4>Evolução do custo médio (12 meses)</h4>
+    <div class="chart">
+      <canvas baseChart [data]="{ labels: lineLabels, datasets: lineDatasets }" [options]="lineOptions" chartType="line"></canvas>
+    </div>
+  </div>
+  <div class="chart-card">
+    <h4>Proporção de impostos</h4>
+    <div class="chart">
+      <canvas baseChart [data]="{ labels: pieLabels, datasets: pieDatasets }" [options]="pieOptions" chartType="pie"></canvas>
+    </div>
+  </div>
+</div>
+
+
+

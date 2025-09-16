@@ -1,0 +1,76 @@
+<form [formGroup]="form" (ngModelChange)="emit()" class="grid">
+  <mat-form-field appearance="outline">
+    <mat-label>Modo</mat-label>
+    <mat-select formControlName="mode">
+      <mat-option value="FCL">FCL</mat-option>
+      <mat-option value="LCL">LCL</mat-option>
+      <mat-option value="AIR">AIR</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Container</mat-label>
+    <mat-select formControlName="containerType">
+      <mat-option value="20DC">20DC</mat-option>
+      <mat-option value="40DC">40DC</mat-option>
+      <mat-option value="40HC">40HC</mat-option>
+      <mat-option value="LCL">LCL</mat-option>
+      <mat-option value="AIR">AIR</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Incoterm</mat-label>
+    <mat-select formControlName="incoterm">
+      <mat-option value="EXW">EXW</mat-option>
+      <mat-option value="FOB">FOB</mat-option>
+      <mat-option value="CFR">CFR</mat-option>
+      <mat-option value="CIF">CIF</mat-option>
+      <mat-option value="DAP">DAP</mat-option>
+      <mat-option value="DDP">DDP</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Origem - País</mat-label>
+    <input matInput formControlName="originCountry" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Origem - Porto</mat-label>
+    <input matInput formControlName="originPort" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Destino - País</mat-label>
+    <input matInput formControlName="destCountry" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Destino - Porto</mat-label>
+    <input matInput formControlName="destPort" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Peso (kg)</mat-label>
+    <input matInput type="number" formControlName="weightKg" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Volume (cbm)</mat-label>
+    <input matInput type="number" formControlName="volumeCbm" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Unidades</mat-label>
+    <input matInput type="number" formControlName="units" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Commodity</mat-label>
+    <input matInput formControlName="commodity" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>HS Code</mat-label>
+    <input matInput formControlName="hsCode" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Ready Date</mat-label>
+    <input matInput [matDatepicker]="rd" formControlName="readyDate" />
+    <mat-datepicker-toggle matSuffix [for]="rd"></mat-datepicker-toggle>
+    <mat-datepicker #rd></mat-datepicker>
+  </mat-form-field>
+</form>
+
+
+

@@ -1,0 +1,12 @@
+<h3>Alertas e Ações Rápidas</h3>
+<mat-nav-list>
+  <a mat-list-item *ngFor="let a of alerts">
+    <mat-icon matListItemIcon>{{ a.icon }}</mat-icon>
+    <div matListItemTitle>{{ a.title }}</div>
+    <div matListItemLine>{{ a.description }}</div>
+    <button mat-stroked-button color="primary" matListItemMeta>{{ a.action }}</button>
+  </a>
+</mat-nav-list>
+
+
+

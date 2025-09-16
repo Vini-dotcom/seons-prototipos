@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.card { background: #fff; padding: 12px; border-radius: 4px; }
+.chart { position: relative; height: 260px; }
+.chart.small { height: 180px; }
+.heatmap { display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; }
+.cell { text-align: center; padding: 8px 0; color: #111; border-radius: 4px; }
+
+.grid > .card:nth-child(1) { grid-column: span 6; }
+.grid > .card:nth-child(2) { grid-column: span 6; }
+.grid > .card:nth-child(3) { grid-column: span 7; }
+.grid > .card:nth-child(4) { grid-column: span 5; }
+.grid > .card:nth-child(5) { grid-column: span 12; }
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(8, 1fr); }
+  .grid > .card { grid-column: span 8 !important; }
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(4, 1fr); }
+  .grid > .card { grid-column: span 4 !important; }
+}
+
+
+

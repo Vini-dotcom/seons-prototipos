@@ -1,0 +1,7 @@
+.cards { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 16px; }
+.cards > * { grid-column: span 4; }
+@media (max-width: 1024px) { .cards > * { grid-column: span 6; } }
+@media (max-width: 600px) { .cards > * { grid-column: span 12; } }
+
+
+

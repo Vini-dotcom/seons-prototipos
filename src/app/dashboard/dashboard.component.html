@@ -1,0 +1,64 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span class="title">Dashboard do Cliente</span>
+  <span class="spacer"></span>
+  <button mat-stroked-button color="accent" (click)="onExportExcel()">
+    <mat-icon>table_view</mat-icon>
+    Exportar Excel
+  </button>
+  <button mat-stroked-button color="accent" (click)="onExportPdf()" style="margin-left: 8px;">
+    <mat-icon>picture_as_pdf</mat-icon>
+    Exportar PDF
+  </button>
+</mat-toolbar>
+
+<div class="filters">
+  <form [formGroup]="filterForm" class="filters-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Data inicial</mat-label>
+      <input matInput [matDatepicker]="pickerStart" formControlName="start" />
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Data final</mat-label>
+      <input matInput [matDatepicker]="pickerEnd" formControlName="end" />
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status do processo</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let s of statuses" [value]="s">{{ s }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Produto</mat-label>
+      <mat-select formControlName="product">
+        <mat-option *ngFor="let p of products" [value]="p">{{ p }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+
+<kpi-cards></kpi-cards>
+
+<div class="content-grid">
+  <section class="follow-up">
+    <h3>Follow-up dos Processos em Andamento</h3>
+    <follow-up-table></follow-up-table>
+  </section>
+
+  <aside class="alerts">
+    <alerts-panel></alerts-panel>
+  </aside>
+</div>
+
+<section class="charts">
+  <cost-analysis></cost-analysis>
+</section>
+
+
+

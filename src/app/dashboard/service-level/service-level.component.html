@@ -1,0 +1,27 @@
+<div class="grid">
+  <mat-card class="kpi" *ngIf="kpis$ | async as k">
+    <h4>Tempo médio de resposta</h4>
+    <div class="value">{{ k.tempoMedioRespostaHoras }} h</div>
+  </mat-card>
+  <mat-card class="kpi" *ngIf="kpis$ | async as k">
+    <h4>Satisfação média</h4>
+    <div class="value">{{ k.satisfacaoMedia }} ★</div>
+  </mat-card>
+
+  <section class="card">
+    <h3>Chamados abertos vs. resolvidos</h3>
+    <div class="chart">
+      <canvas baseChart [data]="{ labels: (tickets$ | async)?.labels, datasets: [ { data: (tickets$ | async)?.abertos, label: 'Abertos' }, { data: (tickets$ | async)?.resolvidos, label: 'Resolvidos' } ] }" [options]="barOptions" chartType="bar"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Satisfação por mês</h3>
+    <div class="chart">
+      <canvas baseChart [data]="{ labels: (satisfaction$ | async)?.labels, datasets: [ { data: (satisfaction$ | async)?.notas, label: 'Nota' } ] }" [options]="lineOptions" chartType="line"></canvas>
+    </div>
+  </section>
+</div>
+
+
+

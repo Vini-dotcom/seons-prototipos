@@ -1,0 +1,11 @@
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; padding: 16px; }
+.card { background: #fff; padding: 12px; border-radius: 4px; }
+.chart { position: relative; height: 240px; }
+.kpi { grid-column: span 6; padding: 12px; }
+.kpi .value { font-size: 22px; font-weight: 600; }
+.grid > .card { grid-column: span 6; }
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(8, 1fr); } .grid > .card, .kpi { grid-column: span 8 !important; } }
+@media (max-width: 600px) { .grid { grid-template-columns: repeat(4, 1fr); } .grid > .card, .kpi { grid-column: span 4 !important; } }
+
+
+

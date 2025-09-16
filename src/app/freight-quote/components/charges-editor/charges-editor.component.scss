@@ -1,0 +1,10 @@
+.header { display: flex; align-items: center; gap: 12px; justify-content: space-between; margin: 8px 0; }
+.list { display: grid; gap: 12px; }
+.item { display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; align-items: end; }
+.item > * { grid-column: span 2; }
+.item > button { grid-column: span 1; }
+@media (max-width: 1024px) { .item > * { grid-column: span 4; } }
+@media (max-width: 600px) { .item > * { grid-column: span 12; } }
+
+
+
